@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: brown;
+  width: 100%;
 }
 .nav_bar h1 {
   margin: 10px;

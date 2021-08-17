@@ -2,16 +2,16 @@ import Card from "../UI/Card";
 import Navigation from "./Navigation";
 import styles from "./Header.module.css";
 import headerImg from "../../header.jpg";
+import React from "react";
 
 const Header = () => {
   return (
-    <div>
+    <React.Fragment>
       <Navigation />
       <div className={styles.img_shape}>
         <img src={headerImg} alt="this is dummy pic" />
-        <Card className={styles.card}>here the discription card</Card>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 export default Header;
