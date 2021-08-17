@@ -1,8 +1,10 @@
-import styles from "./Navigation.module.css";
-import Modal from "../UI/Modal";
 import reactDom from "react-dom";
 import { useState } from "react";
 
+import Modal from "../UI/Modal";
+import Cart from "../Cart";
+
+import styles from "./Navigation.module.css";
 const Navigation = (props) => {
   const [modalState, setModalState] = useState(false);
 
@@ -20,7 +22,9 @@ const Navigation = (props) => {
       <button onClick={onModalHandler}>Cart</button>
       {modalState
         ? reactDom.createPortal(
-            <Modal onClose={onCloseModal} />,
+            <Modal onClose={onCloseModal}>
+              <Cart />
+            </Modal>,
             document.getElementById("modal-container")
           )
         : ""}
