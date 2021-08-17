@@ -1,6 +1,15 @@
 import Card from "./UI/Card";
 import styles from "./FoodList.module.css";
 import React from "react";
+import Meal from "./Meal";
+
+const flist = [
+  { name: "kabab", id: "f1" },
+  { name: "abgoosht", id: "f2" },
+  { name: "gheime", id: "f3" },
+  { name: "jooje", id: "f4" },
+  { name: "an", id: "f5" },
+];
 
 const FoodList = (props) => {
   return (
@@ -17,9 +26,15 @@ const FoodList = (props) => {
       </Card>
 
       <Card className={styles.list_card}>
-        {props.meals.map((meal) => {
-          return <div key={meal.id}>{meal.name}</div>;
-        })}
+        <list>
+          {flist.map((meal) => {
+            return (
+              <ul key={meal.id} className={styles.list_item}>
+                <Meal meal={meal} />
+              </ul>
+            );
+          })}
+        </list>
       </Card>
     </React.Fragment>
   );

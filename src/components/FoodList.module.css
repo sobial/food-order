@@ -9,3 +9,6 @@
   width: -webkit-fill-available;
   background-color: white;
 }
+.list_item {
+  padding: 0;
+}
