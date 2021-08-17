@@ -4,11 +4,67 @@ import React from "react";
 import Meal from "./Meal";
 
 const flist = [
-  { name: "kabab", id: "f1" },
-  { name: "abgoosht", id: "f2" },
-  { name: "gheime", id: "f3" },
-  { name: "jooje", id: "f4" },
-  { name: "an", id: "f5" },
+  {
+    name: "kabab",
+    id: "f1",
+    price: "23.43",
+    ingredients: "goosht, bah ,khiar ,khaviar",
+  },
+  {
+    name: "abgoosht",
+    id: "f2",
+    price: "233.4",
+    ingredients: " bah ,khiar ,khaviar",
+  },
+  {
+    name: "gheime",
+    id: "f3",
+    price: "43.43",
+    ingredients: "piaz, sabzi ,goosht, bah ,khiar ,khaviar",
+  },
+  {
+    name: "jooje",
+    id: "f4",
+    price: "34.65",
+    ingredients: "goosht morgh, zaferoon , bah ,khiar ,khaviar",
+  },
+  { name: "an", id: "f5", price: "23.43", ingredients: "goh" },
+  {
+    name: "kookoo",
+    id: "f6",
+    price: "23.43",
+    ingredients: "goosht, bah ,khiar ,khaviar",
+  },
+  {
+    name: "estamboli",
+    id: "f7",
+    price: "23.43",
+    ingredients: "goosht, bah ,khiar ,khaviar",
+  },
+  {
+    name: "maahi",
+    id: "f8",
+    price: "23.43",
+    ingredients: "goosht, bah ,khiar ,khaviar",
+  },
+  {
+    name: "shirin polo",
+    id: "f9",
+    price: "23.43",
+    ingredients: "goosht, bah ,khiar ,khaviar",
+  },
+  {
+    name: "aash",
+    id: "f10",
+    price: "23.43",
+    ingredients: "goosht, bah ,khiar ,khaviar",
+  },
+  {
+    name: "soup",
+    id: "f11",
+    price: "23.43",
+    ingredients: "goosht, bah ,khiar ,khaviar",
+  },
 ];
 
 const FoodList = (props) => {
@@ -26,15 +82,16 @@ const FoodList = (props) => {
       </Card>
 
       <Card className={styles.list_card}>
-        <list>
+        <li>
           {flist.map((meal) => {
             return (
               <ul key={meal.id} className={styles.list_item}>
                 <Meal meal={meal} />
+                <hr />
               </ul>
             );
           })}
-        </list>
+        </li>
       </Card>
     </React.Fragment>
   );
