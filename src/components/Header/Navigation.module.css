@@ -1,0 +1,12 @@
+.nav_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: brown;
+}
+.nav_bar h1 {
+  margin: 10px;
+}
+.nav_bar button {
+  margin: 10px;
+}
