@@ -9,7 +9,7 @@
 .main {
   width: 65%;
   margin-top: -7%;
-  z-index: 1000;
+  z-index: 2;
   padding: 2px;
   display: flex;
   flex-direction: column;
