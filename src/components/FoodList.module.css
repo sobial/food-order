@@ -1,0 +1,11 @@
+.discription {
+  width: auto;
+  max-width: 70%;
+  text-align: center;
+  background-color: rgb(56, 55, 55);
+  color: white;
+}
+.list_card {
+  width: -webkit-fill-available;
+  background-color: white;
+}
