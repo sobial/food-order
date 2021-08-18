@@ -8,6 +8,18 @@ const deflautVal = {
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
+    // state.items.find((item, index) => {
+    //   if (item.name === action.item.name) {
+    //     const newItems = [...state.items];
+    //     const newAmount =
+    //       state.totalAmount + action.item.amount * action.item.price;
+    //     newItems[index].amount += action.item.amount;
+    //     return {
+    //       items: newItems,
+    //       totalAmount: newAmount,
+    //     };
+    //   }
+    // });
     const newItems = state.items.concat(action.item);
     const newAmount =
       state.totalAmount + action.item.amount * action.item.price;
@@ -24,6 +36,7 @@ const CartProvider = (props) => {
 
   const addItemHandler = (item) => {
     console.log(item.name);
+
     cartStateDispatch({ type: "ADD", item: item });
   };
   const removeItemHandler = (id) => {};

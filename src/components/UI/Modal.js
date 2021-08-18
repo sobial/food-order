@@ -8,7 +8,7 @@ const Modal = (props) => {
   };
   return (
     <React.Fragment>
-      <div className={styles.backdrop} onClick={onClose}>
+      <div className={styles.backdrop}>
         <Card className={styles.modal_card}>{props.children}</Card>
       </div>
     </React.Fragment>

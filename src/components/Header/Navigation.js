@@ -29,7 +29,7 @@ const Navigation = (props) => {
       {modalState
         ? reactDom.createPortal(
             <Modal onClose={onCloseModal}>
-              <Cart />
+              <Cart onClose={onCloseModal} />
             </Modal>,
             document.getElementById("modal-container")
           )
