@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import styles from "./Meal.module.css";
+import CartContext from "../store/CartContext";
 
 const Meal = (props) => {
+  const cartCtx = useContext(CartContext);
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    cartCtx.addItem({ name: "abbas" });
+  };
   return (
     <React.Fragment>
-      <form>
+      <form onSubmit={onSubmitHandler}>
         <div className={styles.detail_container}>
           <h3>{props.meal.name}</h3>
           <p className={styles.ingredients}>{props.meal.ingredients}</p>
