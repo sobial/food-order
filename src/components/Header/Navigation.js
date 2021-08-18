@@ -10,6 +10,10 @@ const Navigation = (props) => {
   const [modalState, setModalState] = useState(false);
   const cartCtx = useContext(CartContext);
 
+  const totalNumber = cartCtx.items.reduce((prevVal, item) => {
+    return prevVal + item.amount;
+  }, 0);
+
   const onModalHandler = (event) => {
     event.preventDefault();
     setModalState(true);
@@ -21,7 +25,7 @@ const Navigation = (props) => {
   return (
     <div className={styles.nav_bar}>
       <h1>ReactMeals</h1>
-      <button onClick={onModalHandler}>Cart {cartCtx.totalAmount}</button>
+      <button onClick={onModalHandler}>Cart {totalNumber}</button>
       {modalState
         ? reactDom.createPortal(
             <Modal onClose={onCloseModal}>

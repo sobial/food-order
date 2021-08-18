@@ -6,9 +6,17 @@ import CartContext from "../store/CartContext";
 const Meal = (props) => {
   const cartCtx = useContext(CartContext);
 
+  const inputRef = React.createRef();
+
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    cartCtx.addItem({ name: "abbas" });
+    cartCtx.addItem({
+      name: props.meal.name,
+      price: props.meal.price,
+      amount: parseInt(inputRef.current.value),
+      id: props.meal.id,
+    });
+    inputRef.current.value = "";
   };
   return (
     <React.Fragment>
@@ -21,7 +29,7 @@ const Meal = (props) => {
         <div className={styles.submit_container}>
           <div className={styles.amount_container}>
             <label>Amount</label>
-            <input type="number" step="1" min="1" />
+            <input type="number" step="1" min="1" ref={inputRef} />
           </div>
           <button type="submit">+Add</button>
         </div>
