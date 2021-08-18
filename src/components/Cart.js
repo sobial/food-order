@@ -11,6 +11,9 @@ const Cart = (props) => {
       id: `${Math.random()}`,
     });
   };
+  const onRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
 
   return (
     <div className={styles.main_container}>
@@ -35,7 +38,14 @@ const Cart = (props) => {
                   >
                     +
                   </button>
-                  <button>-</button>
+                  <button
+                    onClick={(event) => {
+                      event.preventDefault();
+                      onRemoveHandler(item.id);
+                    }}
+                  >
+                    -
+                  </button>
                 </div>
               </ul>
               <hr />

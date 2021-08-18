@@ -37,6 +37,32 @@ const cartReducer = (state, action) => {
       };
     }
   }
+  if (action.type === "REMOVE") {
+    let newTotalAmount = state.totalAmount;
+    let clone = [...state.items];
+    let index = clone.findIndex((item) => item.id === action.id);
+
+    if (state.items[index].amount === 1) {
+      newTotalAmount -= clone[index].price;
+      clone.splice(index, 1);
+      return {
+        totalAmount: newTotalAmount,
+        items: clone,
+      };
+    }
+    if (state.items[index].amount > 1) {
+      newTotalAmount -= clone[index].price;
+      clone[index] = {
+        ...state.items[index],
+        amount: state.items[index].amount - 1,
+      };
+
+      return {
+        items: clone,
+        totalAmount: newTotalAmount,
+      };
+    }
+  }
   return deflautVal;
 };
 
@@ -44,11 +70,11 @@ const CartProvider = (props) => {
   const [cartState, cartStateDispatch] = useReducer(cartReducer, deflautVal);
 
   const addItemHandler = (item) => {
-    console.log(item.name);
-
     cartStateDispatch({ type: "ADD", item: item });
   };
-  const removeItemHandler = (id) => {};
+  const removeItemHandler = (id) => {
+    cartStateDispatch({ type: "REMOVE", id: id });
+  };
 
   const cartContext = {
     items: cartState.items,
