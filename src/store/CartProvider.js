@@ -8,25 +8,34 @@ const deflautVal = {
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
-    // state.items.find((item, index) => {
-    //   if (item.name === action.item.name) {
-    //     const newItems = [...state.items];
-    //     const newAmount =
-    //       state.totalAmount + action.item.amount * action.item.price;
-    //     newItems[index].amount += action.item.amount;
-    //     return {
-    //       items: newItems,
-    //       totalAmount: newAmount,
-    //     };
-    //   }
-    // });
-    const newItems = state.items.concat(action.item);
-    const newAmount =
-      state.totalAmount + action.item.amount * action.item.price;
-    return {
-      items: newItems,
-      totalAmount: newAmount,
-    };
+    let found = false;
+    let clone = [...state.items];
+    let newTotalAmount = state.totalAmount;
+
+    //search for any duplication
+    state.items.find((item, index) => {
+      if (item.name === action.item.name) {
+        const newItem = { ...item, amount: item.amount + action.item.amount };
+        clone[index] = newItem;
+        newTotalAmount += action.item.amount * action.item.price;
+        found = true;
+        return;
+      }
+    });
+
+    if (!found) {
+      clone.push(action.item);
+      newTotalAmount += action.item.amount * action.item.price;
+      return {
+        items: clone,
+        totalAmount: newTotalAmount,
+      };
+    } else {
+      return {
+        items: clone,
+        totalAmount: newTotalAmount,
+      };
+    }
   }
   return deflautVal;
 };
