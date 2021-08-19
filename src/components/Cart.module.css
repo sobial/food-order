@@ -65,6 +65,10 @@ h3 {
   border-radius: 15px;
   min-width: 70px;
 }
+.close_button:hover {
+  background-color: brown;
+  color: white;
+}
 .order_button {
   background-color: brown;
   border: 1px solid brown;
@@ -73,4 +77,8 @@ h3 {
   padding: 5px;
   margin: 3px;
   min-width: 70px;
+}
+.order_button:hover {
+  background-color: white;
+  color: brown;
 }

@@ -17,6 +17,9 @@ form {
   color: white;
   padding: 3px;
 }
+.submit_container button:hover {
+  background-color: rgb(206, 53, 53);
+}
 .submit_container input {
   max-width: 50px;
   margin: 0px 5px 5px 5px;

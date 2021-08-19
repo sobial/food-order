@@ -25,7 +25,10 @@ const Navigation = (props) => {
   return (
     <div className={styles.nav_bar}>
       <h1>ReactMeals</h1>
-      <button onClick={onModalHandler}>Cart {totalNumber}</button>
+      <button onClick={onModalHandler}>
+        <span>Cart</span>
+        <span className={styles.badge}>{totalNumber}</span>
+      </button>
       {modalState
         ? reactDom.createPortal(
             <Modal onClose={onCloseModal}>

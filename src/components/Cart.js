@@ -62,7 +62,11 @@ const Cart = (props) => {
           <button className={styles.close_button} onClick={props.onClose}>
             close
           </button>
-          <button className={styles.order_button}>Order</button>
+          {cartCtx.items.length ? (
+            <button className={styles.order_button}>Order</button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
