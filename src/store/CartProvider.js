@@ -17,7 +17,11 @@ const cartReducer = (state, action) => {
       if (item.name === action.item.name) {
         const newItem = { ...item, amount: item.amount + action.item.amount };
         clone[index] = newItem;
-        newTotalAmount += action.item.amount * action.item.price;
+        newTotalAmount =
+          Math.round(
+            (newTotalAmount + action.item.amount * action.item.price) * 100
+          ) / 100;
+        console.log(newTotalAmount);
         found = true;
         return;
       }
@@ -25,7 +29,10 @@ const cartReducer = (state, action) => {
 
     if (!found) {
       clone.push(action.item);
-      newTotalAmount += action.item.amount * action.item.price;
+      newTotalAmount =
+        Math.round(
+          (newTotalAmount + action.item.amount * action.item.price) * 100
+        ) / 100;
       return {
         items: clone,
         totalAmount: newTotalAmount,
@@ -43,7 +50,8 @@ const cartReducer = (state, action) => {
     let index = clone.findIndex((item) => item.id === action.id);
 
     if (state.items[index].amount === 1) {
-      newTotalAmount -= clone[index].price;
+      newTotalAmount =
+        Math.round((newTotalAmount - clone[index].price) * 100) / 100;
       clone.splice(index, 1);
       return {
         totalAmount: newTotalAmount,
@@ -51,7 +59,8 @@ const cartReducer = (state, action) => {
       };
     }
     if (state.items[index].amount > 1) {
-      newTotalAmount -= clone[index].price;
+      newTotalAmount =
+        Math.round((newTotalAmount - clone[index].price) * 100) / 100;
       clone[index] = {
         ...state.items[index],
         amount: state.items[index].amount - 1,
